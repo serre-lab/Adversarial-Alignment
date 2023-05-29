@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-zoo" class="md-skip">
+        <a href="#model-information" class="md-skip">
           Skip to content
         </a>
       
@@ -323,40 +323,169 @@
   
 
 
-<h1 id="model-zoo">Model zoo<a class="headerlink" href="#model-zoo" title="Permanent link">&para;</a></h1>
-<p>In our experiments, we re-trained a set of models with the harmonization loss proposed in the paper.
-You can easily download the weights of each models here:</p>
+<h1 id="model-information">Model Information<a class="headerlink" href="#model-information" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>ViT B16 Harmonized</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/vit-b16_harmonized.h5">serrelab/prj_harmonization/vit_b16_harmonized</a></li>
-<li><strong>VGG16 Harmonized</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/vgg16_harmonized.h5">serrelab/prj_harmonization/vgg16_harmonized</a></li>
-<li><strong>ResNet50V2 Harmonized</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/resnet50v2_harmonized.h5">serrelab/prj_harmonization/resnet50v2_harmonized</a></li>
-<li><strong>EfficientNet B0</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/efficientnetB0_harmonized.h5">serrelab/prj_harmonization/efficientnet_b0</a></li>
-<li><strong>LeViT</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/levit_small_harmonized.h5">serrelab/prj_harmonization/levit</a></li>
-<li><strong>ConvNeXT</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/convnext_tiny_harmonized.h5">serrelab/prj_harmonization/convnext</a></li>
-<li><strong>MaxViT</strong>: <a href="https://storage.googleapis.com/serrelab/prj_harmonization/models/maxvit_tiny_harmonized.h5">serrelab/prj_harmonization/maxvit</a></li>
+<li>In our experiment, 283 models have been tested and the Top-1 ImageNet accuracy for each model refers to <a href="https://github.com/huggingface/pytorch-image-models/blob/main/results/results-imagenet.csv">Hugging Face results</a>.<ul>
+<li><strong>·</strong> 125 PyTorch CNN models from <a href="https://timm.fast.ai/">timm library</a></li>
+<li><strong>·</strong> 121 PyTorch ViT models from <a href="https://timm.fast.ai/">timm library</a></li>
+<li><strong>·</strong> 15 PyTorch ViT/CNN hybrid architectures from <a href="https://timm.fast.ai/">timm library</a></li>
+<li><strong>·</strong> 14 Tensorflow Harmonized models from <a href="https://serre-lab.github.io/Harmonization/">harmonizatin library</a></li>
+<li><strong>·</strong> 4 Baseline models</li>
+<li><strong>·</strong> 4 models that were trained for robustness to adversarial example</li>
 </ul>
-<p>In order to load them easily, we have set up utilities in the github repository.
-For example, to load the model lives harmonized:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">harmonization.models</span> <span class="kn">import</span> <span class="p">(</span><span class="n">load_ViT_B16</span><span class="p">,</span> <span class="n">load_ResNet50</span><span class="p">,</span>
-                                  <span class="n">load_VGG16</span><span class="p">,</span> <span class="n">load_EfficientNetB0</span><span class="p">,</span>
-                                  <span class="n">load_tiny_ConvNeXT</span><span class="p">,</span> <span class="n">load_tiny_MaxViT</span><span class="p">,</span>
-                                  <span class="n">load_LeViT_small</span><span class="p">,</span>
-                                  <span class="n">preprocess_input</span><span class="p">)</span>
-
-<span class="n">vit_harmonized</span> <span class="o">=</span> <span class="n">load_ViT_B16</span><span class="p">()</span>
-<span class="n">vgg_harmonized</span> <span class="o">=</span> <span class="n">load_VGG16</span><span class="p">()</span>
-<span class="n">resnet_harmonized</span> <span class="o">=</span> <span class="n">load_ResNet50</span><span class="p">()</span>
-<span class="n">efficient_harmonized</span> <span class="o">=</span> <span class="n">load_EfficientNetB0</span><span class="p">()</span>
-<span class="n">convnext_harmonized</span> <span class="o">=</span> <span class="n">load_tiny_ConvNeXT</span><span class="p">()</span>
-<span class="n">maxvit_harmonized</span> <span class="o">=</span> <span class="n">load_tiny_MaxViT</span><span class="p">()</span>
-<span class="n">levit_harmonized</span> <span class="o">=</span> <span class="n">load_LeViT_small</span><span class="p">()</span>
-
-<span class="c1"># load images (in [0, 255])</span>
-<span class="c1"># ...</span>
-
-<span class="n">images</span> <span class="o">=</span> <span class="n">preprocess_input</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">vit_harmonized</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
-</code></pre></div>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Architecture</th>
+<th align="center">Model</th>
+<th align="center">Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CNN</td>
+<td align="center">VGG</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">ResNet</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">EfficientNet</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">ConvNext</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">MobileNet</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">Inception</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">DenseNet</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">RegNet</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">Xception</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">MixNet</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">DPN</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">DarkNet</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">NFNet</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">TinyNet</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">LCNet</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">DLA</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">MnasNet</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">CNN</td>
+<td align="center">CSPNet</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">General ViT</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">MobileViT</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">Swin</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">MaxViT</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">DeiT</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">CaiT</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">XCiT</td>
+<td align="center">28</td>
+</tr>
+<tr>
+<td align="center">ViT</td>
+<td align="center">EVA</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">Hybrid</td>
+<td align="center">VOLO</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">Hybrid</td>
+<td align="center">CoAtNet</td>
+<td align="center">13</td>
+</tr>
+</tbody>
+</table>
 
 
 
