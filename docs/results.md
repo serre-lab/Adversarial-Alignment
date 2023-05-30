@@ -3,7 +3,7 @@
 ## **Perturbation Torlerance**
 
 <p align="center">
-    <img src="./assets/l2.png" width="95%">
+    <img src="../assets/l2.png" width="95%">
 </p>
 
 <!-- <p align="center">
@@ -16,7 +16,7 @@
 ## **Adversarial Alignment**
 
 <p align="center">
-    <img src="./assets/alignment.png" width="95%" />
+    <img src="../assets/alignment.png" width="95%" />
 </p>
 
 <!-- <p align="center">
@@ -28,7 +28,7 @@
 ## **Qualitative Results**
 
 <p align="center">
-<img src="./assets/qualitative.png" width="95%">
+<img src="../assets/qualitative.png" width="95%">
 </p>
 
 <!-- <p align="center">
