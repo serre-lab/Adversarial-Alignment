@@ -14,8 +14,6 @@
     <img src="./assets/alignment.png" width="100%" />
 </p>
 
-<!-- ![](./assets/alignment.png) -->
-
 **Successful adversarial attacks on DNNs are becoming less aligned with human perception as they have improved on ImageNet.** Each dot denotes a DNN's ImageNet accuracy vs. the average Spearman correlation between successful attacks an images' human feature importance maps from *ClickMe*. We call this correlation a DNN's adversarial alignment. Arrows show the change of a DNN in both dimensions after it has been trained with the neural harmonizer. Error bars denote standard error, and variance may be so small for some models that they are not visible.
 
 ## **Qualitative Results**

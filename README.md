@@ -25,6 +25,20 @@
 
 _Drew Linsley*, Pinyuan Feng*, Thibaut Boissin, Alekh Karkada Ashok, Thomas Fel, Stephanie Olaiya, Thomas Serre_
 
+<p align="center">
+  <a href=""><strong>Read the official paper »</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/serre-lab/Adversarial-Alignment">GitHub</a>
+  ·
+  <a href="https://serre-lab.github.io/Adversarial-Alignment/results">Results</a>
+  ·
+  <a href="https://serre-lab.github.io/Adversarial-Alignment/models/">Model Info</a>
+  ·
+  <a href="https://arxiv.org/abs/2211.04533">Harmonization</a>
+  ·
+  <a href="https://arxiv.org/abs/1805.08819">ClickMe</a>
+</p>
 
 <p align="center">
 <img src="./docs/assets/teaser.png"  style="width: 60%;"/>
