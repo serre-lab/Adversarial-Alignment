@@ -9,11 +9,11 @@ with open('requirements.txt', encoding="utf-8") as requirements_file:
 setup(
     name="Adversarial Alignment",
     version="0.0.0",
-    description="Aligning Human & Machine vision",
+    description="Adversarial Alignment",
     long_description=README,
     long_description_content_type="text/markdown",
-    author="Thomas FEL",
-    author_email="thomas_fel@brown.edu",
+    author="Pinyuan Feng",
+    author_email="pinyuan_feng@brown.edu",
     license="MIT",
     install_requires=REQUIREMENTS,
     extras_require={

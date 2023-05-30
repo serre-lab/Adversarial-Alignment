@@ -1,38 +1,41 @@
-# Model zoo
+# Model Information
 
-In our experiments, we re-trained a set of models with the harmonization loss proposed in the paper.
-You can easily download the weights of each models here:
+- In our experiment, 283 models have been tested and the Top-1 ImageNet accuracy for each model refers to [Hugging Face results](https://github.com/huggingface/pytorch-image-models/blob/main/results/results-imagenet.csv).
+    - **·** 125 PyTorch CNN models from [timm library](https://timm.fast.ai/)
+    - **·** 121 PyTorch ViT models from [timm library](https://timm.fast.ai/)
+    - **·** 15 PyTorch ViT/CNN hybrid architectures from [timm library](https://timm.fast.ai/)
+    - **·** 14 Tensorflow Harmonized models from [harmonizatin library](https://serre-lab.github.io/Harmonization/)
+    - **·** 4 Baseline models
+    - **·** 4 models that were trained for robustness to adversarial example
 
-- **ViT B16 Harmonized**: [serrelab/prj_harmonization/vit_b16_harmonized](https://storage.googleapis.com/serrelab/prj_harmonization/models/vit-b16_harmonized.h5)
-- **VGG16 Harmonized**: [serrelab/prj_harmonization/vgg16_harmonized](https://storage.googleapis.com/serrelab/prj_harmonization/models/vgg16_harmonized.h5)
-- **ResNet50V2 Harmonized**: [serrelab/prj_harmonization/resnet50v2_harmonized](https://storage.googleapis.com/serrelab/prj_harmonization/models/resnet50v2_harmonized.h5)
-- **EfficientNet B0**: [serrelab/prj_harmonization/efficientnet_b0](https://storage.googleapis.com/serrelab/prj_harmonization/models/efficientnetB0_harmonized.h5)
-- **LeViT**: [serrelab/prj_harmonization/levit](https://storage.googleapis.com/serrelab/prj_harmonization/models/levit_small_harmonized.h5)
-- **ConvNeXT**: [serrelab/prj_harmonization/convnext](https://storage.googleapis.com/serrelab/prj_harmonization/models/convnext_tiny_harmonized.h5)
-- **MaxViT**: [serrelab/prj_harmonization/maxvit](https://storage.googleapis.com/serrelab/prj_harmonization/models/maxvit_tiny_harmonized.h5)
+| Architecture | Model        | Versions |
+|:------------:|:------------:|:--------:|
+|CNN           | VGG          | 8        |
+|CNN           | ResNet       | 8        |
+|CNN           | EfficientNet | 7        |
+|CNN           | ConvNext     | 6        |
+|CNN           | MobileNet    | 10       |
+|CNN           | Inception    | 3        |
+|CNN           | DenseNet     | 4        |
+|CNN           | RegNet       | 22       |
+|CNN           | Xception     | 4        |
+|CNN           | MixNet       | 4        |
+|CNN           | DPN          | 6        |
+|CNN           | DarkNet      | 1        |
+|CNN           | NFNet        | 11       |
+|CNN           | TinyNet      | 5        |
+|CNN           | LCNet        | 3        |
+|CNN           | DLA          | 12       |
+|CNN           | MnasNet      | 4        |
+|CNN           | CSPNet       | 3        |
+|ViT           | General ViT  | 8        |
+|ViT           | MobileViT    | 10       |
+|ViT           | Swin         | 22       |
+|ViT           | MaxViT       | 14       |
+|ViT           | DeiT         | 24       |
+|ViT           | CaiT         | 10       |
+|ViT           | XCiT         | 28       |
+|ViT           | EVA          | 5        |
+| Hybrid       | VOLO         | 8        |
+| Hybrid       | CoAtNet      | 13       |
 
-
-In order to load them easily, we have set up utilities in the github repository.
-For example, to load the model lives harmonized:
-
-```python
-from harmonization.models import (load_ViT_B16, load_ResNet50,
-                                  load_VGG16, load_EfficientNetB0,
-                                  load_tiny_ConvNeXT, load_tiny_MaxViT,
-                                  load_LeViT_small,
-                                  preprocess_input)
-
-vit_harmonized = load_ViT_B16()
-vgg_harmonized = load_VGG16()
-resnet_harmonized = load_ResNet50()
-efficient_harmonized = load_EfficientNetB0()
-convnext_harmonized = load_tiny_ConvNeXT()
-maxvit_harmonized = load_tiny_MaxViT()
-levit_harmonized = load_LeViT_small()
-
-# load images (in [0, 255])
-# ...
-
-images = preprocess_input(images)
-predictions = vit_harmonized(images)
-```

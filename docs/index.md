@@ -1,25 +1,34 @@
 
 <div style="text-align:center" class="latex-font">
-    <h1 style="text-align: center; font-weight: bold; color: inherit; margin-bottom: 0.2em"> Harmonizing the object recognition strategies of deep neural networks with humans </h1>
+    <h1 style="text-align: center; font-weight: bold; color: inherit; margin-bottom: 0.2em"> Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception </h1>
 
-    <span class="author" style="font-weight: bold"> Thomas Fel*, Ivan Felipe Rodriguez*, Drew Linsley*, <br> Thomas Serre </span> <br>
-    <span class="affiliations"> Carney Institute for Brain Science, Brown University, Providence, RI 02912 </span> <br>
-    <span class="mono"> {thomas_fel,ivan_felipe_rodriguez,drew_linsley,thomas_serre}@brown.edu </span>
+    <span class="author" style="font-weight: bold"> Drew Linsley*<sup>1, 3</sup>, Pinyuan Feng*<sup>2</sup>, Thibaut Boissin<sup>4</sup>, Alekh Karkada Ashok<sup>1, 3</sup>, Thomas Fel<sup>1, 3, 4</sup>, Stephanie Olaiya<sup>1</sup>, Thomas Serre<sup>1, 2, 3, 4</sup> <br> 
+    </span> <br>
+    <span class="affiliations"> Department of Cognitive, Linguistic, & Psychological Sciences, Brown University, Providence, RI, USA </span> <br>
+    <span class="affiliations"> Department of Computer Science, Brown University, Providence, RI, USA </span> <br>
+    <span class="affiliations"> Carney Institute for Brain Science, Brown University, Providence, RI, USA </span> <br>
+    <span class="affiliations"> Artificial and Natural Intelligence Toulouse Institute (ANITI), Toulouse, France </span> <br>
+    </span> <br>
+
+    <!-- <p align="right"> 
+    <i> * : all authors have contributed equally. </i>
+    </p> -->
+    <!-- <span class="mono"> {drew_linsley, pinyuan_feng}@brown.edu</span> -->
 </div>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2211.04533"><strong>Read the official paper »</strong></a>
+  <a href=""><strong>Read the official paper »</strong></a>
   <br>
   <br>
-  <a href="https://serre-lab.github.io/Harmonization/results">Explore results</a>
+  <a href="https://github.com/serre-lab/Adversarial-Alignment">GitHub</a>
+  <!-- ·
+  <a href="https://serre-lab.github.io/Adversarial-Alignment/results">Qualitative Results</a>
   ·
-  <a href="https://github.com/serre-lab/Harmonization">Github</a>
+  <a href="https://serre-lab.github.io/Adversarial-Alignment/models/">Models</a> -->
   ·
-  <a href="https://serre-lab.github.io/Harmonization/models/">Models zoo</a>
+  <a href="https://arxiv.org/abs/2211.04533">Harmonization</a>
   ·
-  <a href="https://serre-lab.github.io/Harmonization/evaluation">Tutorials</a>
-  ·
-  <a href="https://arxiv.org/abs/1805.08819">Click-me paper</a>
+  <a href="https://arxiv.org/abs/1805.08819">ClickMe</a>
 </p>
 
 <div>
@@ -44,29 +53,25 @@
 </div>
 
 
-## Paper summary
+## **Abstract**
 
-<img src="./assets/big_picture.png" width="100%" align="center">
+<p align="center">
+<img src="./assets/teaser.png" width="80%" align="center">
+</p>
 
-The many successes of deep neural networks (DNNs) over the past decade have largely been driven by computational scale rather than insights from biological intelligence. Here, we explore if these trends have also carried concomitant improvements in explaining visual strategies underlying human object recognition. We do this by comparing two related but distinct properties of visual strategies in humans and DNNs: _where_ they believe important visual features are in images and _how_ they use those features to categorize objects. Across 85 different DNNs and three independent datasets measuring human visual strategies on ImageNet, we find a trade-off between DNN top-1 categorization accuracy and their alignment with humans. _State-of-the-art_ DNNs are progressively becoming _less aligned_ with humans. We rectify this growing issue by introducing the harmonization procedure: a general-purpose training routine that aligns DNN and human visual strategies while improving object classification performance.
+Deep neural networks (DNNs) are known to have a fundamental sensitivity to adversarial attacks, perturbations of the input that are imperceptible to humans yet powerful enough to change the visual decision of a model. Adversarial attacks have long been considered the "Achilles' heel" of deep learning, which may eventually force a shift in modeling paradigms. Nevertheless, the formidable capabilities of modern large-scale DNNs have somewhat eclipsed these early concerns. Do adversarial attacks continue to pose a threat to DNNs?
 
-### Aligning the Gradients
+In this study, we investigate how the robustness of DNNs to adversarial attacks has evolved as their accuracy on ImageNet has continued to improve. We measure adversarial robustness in two different ways: First, we measure the smallest adversarial attack needed to cause a model to change its object categorization decision. Second, we measure how aligned successful attacks are with the features that humans find diagnostic for object recognition. We find that adversarial attacks are inducing bigger and more easily detectable changes to image pixels as DNNs grow better on ImageNet, but these attacks are also becoming less aligned with the features that humans find diagnostic for object recognition. To better understand the source of this trade-off and if it is a byproduct of DNN architectures or the routines used to train them, we turn to the neural harmonizer, a DNN training routine that encourages models to leverage the same features humans do to solve tasks. Harmonized DNNs achieve the best of both worlds and experience attacks that are both detectable and affect object features that humans find diagnostic for recognition, meaning that attacks on these models are more likely to be rendered ineffective by inducing similar effects on human perception. Our findings suggest that the sensitivity of DNNs to adversarial attacks can be mitigated by DNN scale, data scale, and training routines that align models with biological intelligence. We release our code and data to support this goal.
 
-<img src="./assets/qualitative_figure.png" width="100%" align="center">
+<!-- ## **Qualitative Results**
 
-Human and DNNs rely on different features to recognize objects. In contrast, our neural
-harmonizer aligns DNN feature importance with humans. Gradients are smoothed from both humans
-and DNNs with a Gaussian kernel to improve visualization.
+<p align="center">
+<img src="./assets/qualitative.png" width="100%">
+</p>
 
-### Breaking the trade-off between performance and alignment
+**$\ell_2$ PGD adversarial attacks for DNNs.** Plotted here are ImageNet images, human feature importance maps from ClickMe, and adversarial attacks for a variety of DNNs. Attacked images are included for the image of a monkey at the top (zoom in to see attack details). The red box shows inanimate categories, and the blue box shows animate categories. -->
 
-<img src="./assets/imagenet_results.png" width="100%" align="center">
-
-The trade-off between DNN performance and alignment with human feature importance from the _ClickMe_ dataset. Human feature alignment is the mean Spearman correlation between human and DNN feature importance maps, normalized by the average inter-rater alignment of humans. The grey-shaded region illustrates the convex hull of the trade-off between ImageNet accuracy and human feature alignment. All the models trained with the harmonization procedure are more accurate and aligned than versions of those models trained only for classification. Arrows denote a shift in performance after training with the harmonization procedure.
-
-
-
-## Authors
+<!-- ## Authors
 
 <p align="center">
 
@@ -101,12 +106,26 @@ The trade-off between DNN performance and alignment with human feature importanc
 <i> * : all authors have contributed equally. </i>
 </p>
 
-</p>
+</p> -->
 
 
-## 🗞️ Citation
+## **Citation**
 
-If you use or build on our work as part of your workflow in a scientific publication, please consider citing the [official paper](https://arxiv.org/abs/2211.04533):
+If you use or build on our work as part of your workflow in a scientific publication, please consider citing the [official paper]():
+
+```
+@article{linsley2023adv,
+  title={Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception},
+  author={Linsley, Drew and Feng, Pinyuan and Boissin, Thibaut and Ashok, Alekh Karkada and Fel, Thomas and Olaiya Stephanie and Serre, Thomas},
+  year={2023}
+}
+```
+
+If you have any questions about the paper, please contact Drew at [drew_linsley@brown.edu](drew_linsley@brown.edu).
+
+## **Acknowledgement**
+
+This paper relies heavily on previous work from Serre Lab, notably [Harmonization](https://serre-lab.github.io/Harmonization/) and [ClickMe](https://serre-lab.clps.brown.edu/resource/clickme/).
 
 ```
 @article{fel2022aligning,
@@ -115,11 +134,7 @@ If you use or build on our work as part of your workflow in a scientific publica
   journal={Advances in Neural Information Processing Systems (NeurIPS)},
   year={2022}
 }
-```
 
-Moreover, this paper relies heavily on previous work from the Lab, notably [Learning What and Where to Attend](https://arxiv.org/abs/1805.08819) where the ambitious ClickMe dataset was collected.
-
-```
 @article{linsley2018learning,
   title={Learning what and where to attend},
   author={Linsley, Drew and Shiebler, Dan and Eberhardt, Sven and Serre, Thomas},
@@ -128,7 +143,7 @@ Moreover, this paper relies heavily on previous work from the Lab, notably [Lear
 }
 ```
 
-## Tutorials
+<!-- ## Tutorials
 
 **Evaluate your own model (pytorch and tensorflow)**
 
@@ -136,9 +151,9 @@ Moreover, this paper relies heavily on previous work from the Lab, notably [Lear
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/230px-Tensorflow_logo.svg.png" width=35>
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bttp-hVnV_agJGhwdRRW6yUBbf-eImRN) 
-<img src="https://pytorch.org/assets/images/pytorch-logo.png" width=35>
+<img src="https://pytorch.org/assets/images/pytorch-logo.png" width=35> -->
 
 
-## 📝 License
+## **License**
 
 The package is released under <a href="https://choosealicense.com/licenses/mit"> MIT license</a>.

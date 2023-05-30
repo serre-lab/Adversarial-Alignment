@@ -1,212 +1,28 @@
+# Results
 
+## **Perturbation Torlerance vs. Accuracy**
 
-## **Harmonized ViT** vs **ViT**
+<p align="center">
+<img src="./assets/l2.png" width="100%">
+</p>
 
-<div class="gallery-container">
+**The perturbation tolerance of DNNs has significantly increased as they have improved on ImageNet.** Each dot denotes a DNN's ImageNet accuracy vs. its average $\ell_2$ robustness radius to $\ell_2$ PGD attacks, which we call ''perturbation tolerance''. Arrows show the change of a DNN in both dimensions after it has been trained with the neural harmonizer. There is a significant positive correlation between ImageNet accuracy and perturbation tolerance ($\rho_{s} = 0.70$, $p < 0.001$). Error bars denote standard error, and variance may be so small for some models that they are not visible.
 
-    <div class="overlay-left"> 
+## **Adversarial Alignment vs. Accuracy**
 
-            <div> Click-Me (Human) </div>
-            <div> Baseline model </div>
-            <div> Harmonized model </div>
+<p align="center">
+    <img src="./assets/alignment.png" width="100%" />
+</p>
 
-    </div>
+<!-- ![](./assets/alignment.png) -->
 
-    <div class="gallery" id="vit">
+**Successful adversarial attacks on DNNs are becoming less aligned with human perception as they have improved on ImageNet.** Each dot denotes a DNN's ImageNet accuracy vs. the average Spearman correlation between successful attacks an images' human feature importance maps from *ClickMe*. We call this correlation a DNN's adversarial alignment. Arrows show the change of a DNN in both dimensions after it has been trained with the neural harmonizer. Error bars denote standard error, and variance may be so small for some models that they are not visible.
 
-    </div>
+## **Qualitative Results**
 
-</div>
+<p align="center">
+<img src="./assets/qualitative.png" width="100%">
+</p>
 
-## **Harmonized VGG** vs **VGG**
+**$\ell_2$ PGD adversarial attacks for DNNs.** Plotted here are ImageNet images, human feature importance maps from ClickMe, and adversarial attacks for a variety of DNNs. Attacked images are included for the image of a monkey at the top (zoom in to see attack details). The red box shows inanimate categories, and the blue box shows animate categories.
 
-<div class="gallery-container">
-
-    <div class="overlay-left">
-
-            <div> Click-Me (Human) </div>
-            <div> Baseline model </div>
-            <div> Harmonized model </div>
-
-    </div>
-
-    <div class="gallery" id="vgg">
-
-    </div>
-
-</div>
-
-## **Harmonized EfficientNetB0** vs **EfficientNetB0**
-
-<div class="gallery-container">
-
-    <div class="overlay-left">
-
-            <div> Click-Me (Human) </div>
-            <div> Baseline model </div>
-            <div> Harmonized model </div>
-
-    </div>
-
-    <div class="gallery" id="effnet">
-
-    </div>
-
-</div>
-
-## **Harmonized ResNet50** vs **ResNet50**
-
-<div class="gallery-container">
-
-    <div class="overlay-left">
-
-            <div> Click-Me (Human) </div>
-            <div> Baseline model </div>
-            <div> Harmonized model </div>
-
-    </div>
-
-    <div class="gallery" id="resnet">
-
-    </div>
-
-</div>
-
-
-
-<script defer>
-
-window.addEventListener('DOMContentLoaded', function() {
-
-    function is_ascendent(parent, child) {
-        var node = child;
-        while (node != null) {
-            if (node == parent) {
-                return true;
-            }
-            node = node.parentNode;
-        }
-        return false;
-    }
-
-    function event_prevent_default(e) {
-        e = e || window.event;
-        if (e.preventDefault)
-            e.preventDefault();
-        e.returnValue = false;
-    }
-
-    const NB_IMAGES = 100
-    const SCROLL_POWER = 50
-
-    const GALLERY_DATA = [
-        ['vit', 'vit_baseline_faithful-wind.h5', 'vit_harmonized_solar-shadow.h5'],
-        ['vgg', 'vgg16', 'vgg_frosty_eon'],
-        ['effnet', 'efficientnet_b0', 'efficientnet_stellar-frog_8.h5'],
-        ['resnet', 'resnet50_baseline', 'saliency_volcanic_monkey'],
-    ];
-
-    GALLERY_DATA.forEach((data) => {
-
-        [gallery_name, model_baseline, model_harmonized] = data
-
-        const gallery = document.getElementById(gallery_name)
-        const horizontal_scroll_event = (e) => {
-
-            if (is_ascendent(gallery, e.target)) {
-                if (e.deltaY > 0) gallery.scrollLeft += SCROLL_POWER;
-                else gallery.scrollLeft -= SCROLL_POWER;
-
-                window.scrollTop -= e.wheelDeltaY;
-                e.preventDefault();
-                e.stopPropagation();
-            }
-
-        }
-
-        window.addEventListener("wheel", horizontal_scroll_event, { passive: false })
-
-        const create_single_sample = (id) => {
-            return `
-                <div class="single-sample">
-                    <img class="explanation" loading="lazy" src="https://storage.googleapis.com/serrelab/prj_harmonization/qualitative_data/clickme/${id}.png">
-                    <img class="explanation" loading="lazy" src="https://storage.googleapis.com/serrelab/prj_harmonization/qualitative_data/${model_baseline}/${id}.png">
-                    <img class="explanation harmonized" loading="lazy" src="https://storage.googleapis.com/serrelab/prj_harmonization/qualitative_data/${model_harmonized}/${id}.png">
-                </div>
-            `
-        }
-
-        for (let i = 0; i < NB_IMAGES; i++) {
-            gallery.innerHTML += create_single_sample(i)
-        }
-
-    })
-});
-
-
-
-</script>
-
-<style>
-
-.single-sample {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.gallery-container {
-    position: relative;
-}
-
-.gallery {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    position: relative;
-    padding: 20px;
-    padding-left: 105px;
-    box-sizing: border-box;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.explanation {
-    width: 150px;
-    border: solid 0px;
-    background: transparent;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    border: solid 3px transparent;
-    margin: 2px;
-    border-radius: 5px;
-}
-.explanation.harmonized {
-    border-color: var(--primary);
-}
-
-.overlay-left {
-    position: absolute;
-    left: 0;
-    top:0;
-    background: var(--md-default-bg-color);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    width: 100px;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    white-space: initial;
-    z-index: 2;
-    font-size: 18px
-}
-
-
-</style>

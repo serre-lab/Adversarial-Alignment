@@ -1,4 +1,4 @@
-site_name: Harmonization
+site_name: Adversarial Alignment
 
 google_analytics:
   - UA-132343476-2
@@ -11,8 +11,8 @@ nav:
 
 theme:
   name: "material"
-  logo: assets/harmonization_icon.png
-  favicon: assets/harmonization_icon.png
+  logo: assets/aa_logo_2.png
+  favicon: assets/aa_logo_2.png
   palette:
     - scheme: default
       primary: dark
