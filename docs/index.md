@@ -17,7 +17,7 @@
 </div>
 
 <p align="center">
-  <a href=""><strong>Read the official paper »</strong></a>
+  <a href=""><strong>Read our paper »</strong></a>
   <br>
   <br>
   <a href="https://github.com/serre-lab/Adversarial-Alignment">GitHub</a>
