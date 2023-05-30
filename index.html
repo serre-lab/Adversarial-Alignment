@@ -12,12 +12,12 @@
       
         <link rel="next" href="results/">
       
-      <link rel="icon" href="assets/harmonization_icon.png">
+      <link rel="icon" href="assets/aa_logo_2.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Harmonization</title>
+        <title>Adversarial Alignment</title>
       
     
     
@@ -87,9 +87,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Harmonization" class="md-header__button md-logo" aria-label="Harmonization" data-md-component="logo">
+    <a href="." title="Adversarial Alignment" class="md-header__button md-logo" aria-label="Adversarial Alignment" data-md-component="logo">
       
-  <img src="assets/harmonization_icon.png" alt="logo">
+  <img src="assets/aa_logo_2.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -99,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Harmonization
+            Adversarial Alignment
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -210,12 +210,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Harmonization" class="md-nav__button md-logo" aria-label="Harmonization" data-md-component="logo">
+    <a href="." title="Adversarial Alignment" class="md-nav__button md-logo" aria-label="Adversarial Alignment" data-md-component="logo">
       
-  <img src="assets/harmonization_icon.png" alt="logo">
+  <img src="assets/aa_logo_2.png" alt="logo">
 
     </a>
-    Harmonization
+    Adversarial Alignment
   </label>
   
     <div class="md-nav__source">
@@ -272,13 +272,6 @@
         <li class="md-nav__item">
   <a href="#abstract" class="md-nav__link">
     Abstract
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#qualitative-results" class="md-nav__link">
-    Qualitative Results
   </a>
   
 </li>
@@ -374,13 +367,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#qualitative-results" class="md-nav__link">
-    Qualitative Results
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#citation" class="md-nav__link">
     Citation
   </a>
@@ -422,14 +408,18 @@
 <div style="text-align:center" class="latex-font">
     <h1 style="text-align: center; font-weight: bold; color: inherit; margin-bottom: 0.2em"> Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception </h1>
 
-    <span class="author" style="font-weight: bold"> Drew Linsley*<sup>1, 3</sup>, Pinyuan Feng*<sup>2</sup>, Thibaut Boissin<sup>4</sup>, Alekh Karkada Ashok<sup>1, 3</sup>, Thomas FEL<sup>1, 3, 4</sup>, Stephanie Olaiya<sup>1</sup>, Thomas Serre<sup>1, 2, 3, 4</sup> <br> 
+    <span class="author" style="font-weight: bold"> Drew Linsley*<sup>1, 3</sup>, Pinyuan Feng*<sup>2</sup>, Thibaut Boissin<sup>4</sup>, Alekh Karkada Ashok<sup>1, 3</sup>, Thomas Fel<sup>1, 3, 4</sup>, Stephanie Olaiya<sup>1</sup>, Thomas Serre<sup>1, 2, 3, 4</sup> <br> 
     </span> <br>
     <span class="affiliations"> Department of Cognitive, Linguistic, & Psychological Sciences, Brown University, Providence, RI, USA </span> <br>
     <span class="affiliations"> Department of Computer Science, Brown University, Providence, RI, USA </span> <br>
     <span class="affiliations"> Carney Institute for Brain Science, Brown University, Providence, RI, USA </span> <br>
     <span class="affiliations"> Artificial and Natural Intelligence Toulouse Institute (ANITI), Toulouse, France </span> <br>
     </span> <br>
-    <span class="mono"> {drew_linsley, pinyuan_feng, alekh_karkada_ashok, thomas_fel, stephanie_olaiya, thomas_serre}@brown.edu, thibaut.boissin@irt-saintexupery.com </span>
+
+    <!-- <p align="right"> 
+    <i> * : all authors have contributed equally. </i>
+    </p> -->
+    <!-- <span class="mono"> {drew_linsley, pinyuan_feng}@brown.edu</span> -->
 </div>
 
 <p align="center">
@@ -475,12 +465,14 @@
 
 <p>Deep neural networks (DNNs) are known to have a fundamental sensitivity to adversarial attacks, perturbations of the input that are imperceptible to humans yet powerful enough to change the visual decision of a model. Adversarial attacks have long been considered the "Achilles' heel" of deep learning, which may eventually force a shift in modeling paradigms. Nevertheless, the formidable capabilities of modern large-scale DNNs have somewhat eclipsed these early concerns. Do adversarial attacks continue to pose a threat to DNNs?</p>
 <p>In this study, we investigate how the robustness of DNNs to adversarial attacks has evolved as their accuracy on ImageNet has continued to improve. We measure adversarial robustness in two different ways: First, we measure the smallest adversarial attack needed to cause a model to change its object categorization decision. Second, we measure how aligned successful attacks are with the features that humans find diagnostic for object recognition. We find that adversarial attacks are inducing bigger and more easily detectable changes to image pixels as DNNs grow better on ImageNet, but these attacks are also becoming less aligned with the features that humans find diagnostic for object recognition. To better understand the source of this trade-off and if it is a byproduct of DNN architectures or the routines used to train them, we turn to the neural harmonizer, a DNN training routine that encourages models to leverage the same features humans do to solve tasks. Harmonized DNNs achieve the best of both worlds and experience attacks that are both detectable and affect object features that humans find diagnostic for recognition, meaning that attacks on these models are more likely to be rendered ineffective by inducing similar effects on human perception. Our findings suggest that the sensitivity of DNNs to adversarial attacks can be mitigated by DNN scale, data scale, and training routines that align models with biological intelligence. We release our code and data to support this goal.</p>
-<h2 id="qualitative-results"><strong>Qualitative Results</strong><a class="headerlink" href="#qualitative-results" title="Permanent link">&para;</a></h2>
+<!-- ## **Qualitative Results**
+
 <p align="center">
 <img src="./assets/qualitative.png" width="100%">
 </p>
 
-<p><strong><span class="arithmatex"><span class="MathJax_Preview">\ell_2</span><script type="math/tex">\ell_2</script></span> PGD adversarial attacks for DNNs.</strong> Plotted here are ImageNet images, human feature importance maps from ClickMe, and adversarial attacks for a variety of DNNs. Attacked images are included for the image of a monkey at the top (zoom in to see attack details). The red box shows inanimate categories, and the blue box shows animate categories.</p>
+**$\ell_2$ PGD adversarial attacks for DNNs.** Plotted here are ImageNet images, human feature importance maps from ClickMe, and adversarial attacks for a variety of DNNs. Attacked images are included for the image of a monkey at the top (zoom in to see attack details). The red box shows inanimate categories, and the blue box shows animate categories. -->
+
 <!-- ## Authors
 
 <p align="center">
@@ -519,15 +511,16 @@
 </p> -->
 
 <h2 id="citation"><strong>Citation</strong><a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
-<p>If you use or build on our work as part of your workflow in a scientific publication, please consider citing the <a href="https://arxiv.org/abs/2211.04533">official paper</a>:</p>
+<p>If you use or build on our work as part of your workflow in a scientific publication, please consider citing the <a href="">official paper</a>:</p>
 <div class="highlight"><pre><span></span><code>@article{linsley2023adv,
   title={Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception},
   author={Linsley, Drew and Feng, Pinyuan and Boissin, Thibaut and Ashok, Alekh Karkada and Fel, Thomas and Olaiya Stephanie and Serre, Thomas},
   year={2023}
 }
 </code></pre></div>
+<p>If you have any questions about the paper, please contact Drew at <a href="drew_linsley@brown.edu">drew_linsley@brown.edu</a>.</p>
 <h2 id="acknowledgement"><strong>Acknowledgement</strong><a class="headerlink" href="#acknowledgement" title="Permanent link">&para;</a></h2>
-<p>This paper relies heavily on previous work from the Lab, notably <a href="https://serre-lab.github.io/Harmonization/">Harmonization</a> and <a href="https://serre-lab.clps.brown.edu/resource/clickme/">ClickMe</a>.</p>
+<p>This paper relies heavily on previous work from Serre Lab, notably <a href="https://serre-lab.github.io/Harmonization/">Harmonization</a> and <a href="https://serre-lab.clps.brown.edu/resource/clickme/">ClickMe</a>.</p>
 <div class="highlight"><pre><span></span><code>@article{fel2022aligning,
   title={Harmonizing the object recognition strategies of deep neural networks with humans},
   author={Fel, Thomas and Felipe, Ivan and Linsley, Drew and Serre, Thomas},
