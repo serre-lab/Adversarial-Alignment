@@ -24,7 +24,7 @@ def warn(*args, **kwargs):
 import warnings
 warnings.warn = warn
 
-def attack(model, img, target, eps, alpha=0.5, iter=3):
+def execute_attack(model, img, target, eps, alpha=0.5, iter=3):
     # Initialize an attack
     attack_obj = attack(model, images, labels, eps, alpha=alpha, iters=iter)
     perturbed_img = attack_obj(img, target)
@@ -102,6 +102,16 @@ def main():
 
         model.eval()
         
+        data_config = timm.data.resolve_model_data_config(model)
+        print(data_config)
+        timm_transforms = timm.data.create_transform(**data_config, is_training=False)
+        timm_transforms = transforms.Compose([
+            transforms.ToPILImage(),
+            *timm_transforms.transforms,
+        ])
+        print(timm_transforms)
+        print(type(timm_transforms))
+        
         # Instantiate a tensorflow dataset
         data = dataset.Dataset(data_path)
         l2_list, linf_list = [], []
@@ -114,15 +124,20 @@ def main():
             hmps = util.tf2torch(hmps)
 
             # Apply image transformation to meet the input requirements
-            nh, nw = timm_transforms.transforms[1].size
-            _, _, h, w = imgs.shape
-            if not (h, w) == (nh, nw):
-                # print(h, w, nh, nw)
-                transform = transforms.Resize((nh, nw), transforms.InterpolationMode.BICUBIC)
-                imgs = transform(imgs)
-                hmps = transform(hmps)
+            # nh, nw = timm_transforms.transforms[1].size
+            # _, _, h, w = imgs.shape
+            # if not (h, w) == (nh, nw):
+            #     # print(h, w, nh, nw)
+            #     transform = transforms.Resize((nh, nw), transforms.InterpolationMode.BICUBIC)
+            #     imgs = transform(imgs)
+            #     hmps = transform(hmps)
 
-            imgs = util.img_normalize(imgs)
+            # imgs = util.img_normalize(imgs)
+            
+            # Apply image transformation to meet the input requirements
+            imgs = imgs / 255.0
+            imgs = torch.stack([timm_transforms(img) for img in imgs], dim=0).to(device)
+            
             hmps = util.img_normalize(hmps)
             labels = util.tf2torch(labels).to(device)
 
@@ -157,7 +172,7 @@ def main():
                 
                 # Apply first attack
                 initial_eps = eps_upper
-                perturbed_img, perturbed_pred = attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
+                perturbed_img, perturbed_pred = execute_attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
 
                 if perturbed_pred.item() == target.item(): 
                     # Assume 10 is the min eps that fools the model
@@ -168,7 +183,7 @@ def main():
                     key = None
 
                     initial_eps = 1
-                    perturbed_img, perturbed_pred = attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
+                    perturbed_img, perturbed_pred = execute_attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
 
                     key = initial_eps
                     info[key] = (perturbed_img, perturbed_pred)
@@ -183,7 +198,7 @@ def main():
                     # Apply binary search
                     while r - l >= threshold:
                         eps = l + (r - l) / 2
-                        perturbed_img, perturbed_pred = attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
+                        perturbed_img, perturbed_pred = execute_attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
                         if perturbed_pred.item() != target.item():
                             r = eps
                             if r != key:
@@ -197,7 +212,7 @@ def main():
                     if r in info:
                         perturbed_img, perturbed_pred = info[r]
                     else:
-                        perturbed_img, perturbed_pred = attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
+                        perturbed_img, perturbed_pred = execute_attack(model=model, img=img, target=target, eps=initial_eps, alpha=alpha, iter=iter)
 
                     if not (perturbed_pred.item() != target.item()): 
                         continue

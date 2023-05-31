@@ -17,11 +17,11 @@
 </div>
 
 <p align="center">
-  <a href=""><strong>Read our paper »</strong></a>
+  <a href=""><strong>Read our paper »</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/serre-lab/Adversarial-Alignment"><strong>View our GitHub »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/serre-lab/Adversarial-Alignment">GitHub</a>
-  ·
+  <!-- <a href="https://github.com/serre-lab/Adversarial-Alignment">GitHub</a>
+  · -->
   <a href="https://serre-lab.github.io/Adversarial-Alignment/results">Results</a>
   ·
   <a href="https://serre-lab.github.io/Adversarial-Alignment/models/">Model Info</a>
