@@ -1,6 +1,6 @@
 # Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception
 
-<div>
+<!-- <div>
     <a href="#">
         <img src="https://img.shields.io/badge/Python-3.6, 3.7, 3.8-efefef">
     </a>
@@ -19,7 +19,7 @@
     <a href="#">
         <img src="https://img.shields.io/badge/License-MIT-efefef">
     </a>
-</div>
+</div> -->
 
 <br>
 
@@ -38,6 +38,8 @@ _Drew Linsley*, Pinyuan Feng*, Thibaut Boissin, Alekh Karkada Ashok, Thomas Fel,
   <a href="https://arxiv.org/abs/2211.04533">Harmonization</a>
   ·
   <a href="https://arxiv.org/abs/1805.08819">ClickMe</a>
+  ·
+  <a href="https://serre-lab.clps.brown.edu/">Serre Lab @ Brown</a>
 </p>
 
 <p align="center">
@@ -123,5 +125,5 @@ This paper relies heavily on previous work from Serre Lab, notably [Harmonizatio
 ```
 
 ## License
-The package is released under [MIT license](https://choosealicense.com/licenses/mit/)
+The code is released under [MIT license](https://choosealicense.com/licenses/mit/)
 

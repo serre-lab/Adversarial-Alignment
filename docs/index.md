@@ -29,9 +29,11 @@
   <a href="https://arxiv.org/abs/2211.04533">Harmonization</a>
   ·
   <a href="https://arxiv.org/abs/1805.08819">ClickMe</a>
+  ·
+  <a href="https://serre-lab.clps.brown.edu/">Serre Lab @ Brown</a>
 </p>
 
-<div>
+<!-- <div>
     <a href="#">
         <img src="https://img.shields.io/badge/Python-3.6, 3.7, 3.8-efefef">
     </a>
@@ -50,7 +52,7 @@
     <a href="#">
         <img src="https://img.shields.io/badge/License-MIT-efefef">
     </a>
-</div>
+</div> -->
 
 
 ## **Abstract**
@@ -125,7 +127,7 @@ If you have any questions about the paper, please contact Drew at [drew_linsley@
 
 ## **Acknowledgement**
 
-This paper relies heavily on previous work from Serre Lab, notably [Harmonization](https://serre-lab.github.io/Harmonization/) and [ClickMe](https://serre-lab.clps.brown.edu/resource/clickme/).
+This paper relies heavily on previous work from [Serre Lab](https://serre-lab.clps.brown.edu/), notably [Harmonization](https://serre-lab.github.io/Harmonization/) and [ClickMe](https://serre-lab.clps.brown.edu/resource/clickme/).
 
 ```
 @article{fel2022aligning,
@@ -156,4 +158,4 @@ This paper relies heavily on previous work from Serre Lab, notably [Harmonizatio
 
 ## **License**
 
-The package is released under <a href="https://choosealicense.com/licenses/mit"> MIT license</a>.
+The code is released under <a href="https://choosealicense.com/licenses/mit"> MIT license</a>.
