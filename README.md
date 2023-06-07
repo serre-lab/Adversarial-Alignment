@@ -26,7 +26,7 @@
 _Drew Linsley*, Pinyuan Feng*, Thibaut Boissin, Alekh Karkada Ashok, Thomas Fel, Stephanie Olaiya, Thomas Serre_
 
 <p align="center">
-  <a href=""><strong>Read our paper »</strong></a>
+  <a href="https://arxiv.org/abs/2306.03229"><strong>Read our paper »</strong></a>
   <br>
   <br>
   <a href="https://serre-lab.github.io/Adversarial-Alignment/">Website</a>
