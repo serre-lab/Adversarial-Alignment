@@ -123,21 +123,18 @@ def main():
             imgs = util.tf2torch(imgs).to(device)
             hmps = util.tf2torch(hmps)
 
-            # Apply image transformation to meet the input requirements
-            # nh, nw = timm_transforms.transforms[1].size
-            # _, _, h, w = imgs.shape
-            # if not (h, w) == (nh, nw):
-            #     # print(h, w, nh, nw)
-            #     transform = transforms.Resize((nh, nw), transforms.InterpolationMode.BICUBIC)
-            #     imgs = transform(imgs)
-            #     hmps = transform(hmps)
-
-            # imgs = util.img_normalize(imgs)
+            # Apply heatmap transformation to meet the input requirements
+            nh, nw = timm_transforms.transforms[2].size
+            _, _, h, w = imgs.shape
+            if not (h, w) == (nh, nw):
+                transform = transforms.Resize((nh, nw), transforms.InterpolationMode.BICUBIC)
+                hmps = transform(hmps)
             
             # Apply image transformation to meet the input requirements
             imgs = imgs / 255.0
             imgs = torch.stack([timm_transforms(img) for img in imgs], dim=0).to(device)
             
+            imgs = util.img_normalize(imgs).to(device)
             hmps = util.img_normalize(hmps)
             labels = util.tf2torch(labels).to(device)
 

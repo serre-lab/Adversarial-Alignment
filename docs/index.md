@@ -117,10 +117,13 @@ In this study, we investigate how the robustness of DNNs to adversarial attacks 
 If you use or build on our work as part of your workflow in a scientific publication, please consider citing the [official paper]():
 
 ```
-@article{linsley2023adv,
-  title={Adversarial Alignment: breaking the trade-off between the strength of an attack and its relevance to human perception},
-  author={Linsley, Drew and Feng, Pinyuan and Boissin, Thibaut and Ashok, Alekh Karkada and Fel, Thomas and Olaiya Stephanie and Serre, Thomas},
-  year={2023}
+@article{linsley2023adversarial,
+      title={Adversarial alignment: Breaking the trade-off between the strength of an attack and its relevance to human perception}, 
+      author={Drew Linsley and Pinyuan Feng and Thibaut Boissin and Alekh Karkada Ashok and Thomas Fel and Stephanie Olaiya and Thomas Serre},
+      year={2023},
+      eprint={2306.03229},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
