@@ -39,8 +39,7 @@ class Attack:
             
             # project the current point on the l2(x0, epsilon) ball :)
             delta = x_next - x0
-            sigma = self.l2(delta)
-            x_next = x_next + (delta / sigma) * eps
+            x_next = x0 + (delta / self.l2(delta)) * eps
             
             # ready for the next step
             xt = x_next.clamp(min=0, max=1).detach()
